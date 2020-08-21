@@ -4,24 +4,15 @@ Your function should return a count of how many occurences of ***"th"*** occur w
 Your function must utilize recursion. It cannot contain any loops.
 '''
 
-counter = []
-
 def count_th(word):
 
-    #counter = []
+    i = 0
 
     if len(word) <= 1:
-        return len(counter)
+        return 0
 
-    #for i in range(len(word) - 1):
-    if word[0] == "t" and word[1] == "h":
-        #counter += 1
-        counter.append('a')
-        return count_th(word[2:])
+    elif word[i] == "t" and word[i+1] == "h":
+        return 1 + count_th(word[i+2:])
         
     else:
-        return count_th(word[1:])
-
-word = "abcthxyz"
-
-print(count_th(word))
+        return count_th(word[i+1:])

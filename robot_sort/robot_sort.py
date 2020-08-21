@@ -99,38 +99,32 @@ class SortingRobot:
         # Fill this out
 
         #bubble sort looks like it could be an option
+        
+        #start with trying to move, if cant theres only one left and is sorted basically
+        if not self.can_move_right():
+            return
+        #start swaps
+        self.swap_item()
 
-        self.set_light_on()
-
-        while self.light_is_on():
-
-            self.light_is_off()
-
-            self.position = 0
-
+        while True:
+            #move riht and try to swap greatest vals
             while self.can_move_right():
-
                 self.move_right()
-                #maybe switch these
-                self.swap_item()
 
                 if self.compare_item() == 1:
-
                     self.swap_item()
-
-                    self.set_light_on()
-
-            self.move_left()
-            
+            #now at end hodling smallest, move left
+            while self.compare_item() != None:
+                self.move_left()
+            #put down 
             self.swap_item()
+            #look to move right
+            if not self.can_move_right():
+                return
 
-            #if statement needed?
-            if self.can_move_right():
-                self.move_right()
-
-            #else:
-            #    self.set_light_off()
-
+            self.move_right()
+            #pick it up
+            self.swap_item()
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
